@@ -2,7 +2,7 @@
 export class ApiError extends Error{
     constructor(statusCode, message = 'Something went wrong', errors = [], stack = ''){
     super(message)
-    statusCode.this=statusCode
+    this.statusCode=statusCode
     this.success = false;
     this.errors = errors;
     this.isOperational = true;

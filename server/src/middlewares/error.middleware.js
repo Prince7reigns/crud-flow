@@ -1,6 +1,5 @@
 import { ZodError } from "zod";
-import { ApiError } from "../utils/ApiError";
-import { env } from '../config/env.js';
+import { ApiError } from "../utils/ApiError.js";
 
 export const errorHandler = (err,req,res,next)=>{
     let error=err;
@@ -34,7 +33,7 @@ export const errorHandler = (err,req,res,next)=>{
         success:false,
         message:error.message,
         errors:error.errors,
-        ...(env.NODE_ENV!=='profuction' && {stack:err.stack}),
+        ...(process.env.NODE_ENV!=='profuction' && {stack:err.stack}),
     })
 }
 
