@@ -9,7 +9,7 @@ export const validate = (schema) => (req,_res,next) =>{
     });
 
     if(!result.success){
-        const errors = result.error.issues.map((i)=({
+        const errors = result.error.issues.map((i)=>({
             feild:i.path.slice(1).join('.'),
             message:i.message,
         }))
