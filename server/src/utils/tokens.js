@@ -12,7 +12,7 @@ export const hashToken = (t) => crypto.createHash('sha256').update(t).digest('he
 const cookieOpts = {
     httpOnly:true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: env.NODE_ENV === 'production' ? 'none' : 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     path: '/api/v1/auth',
 }
 
