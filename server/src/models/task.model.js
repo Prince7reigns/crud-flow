@@ -1,7 +1,7 @@
 
-import mongooes from mongooes
+import mongoose from "mongoose";
 
-const taskSchema = mongooes.Schema({
+const taskSchema = new mongoose.Schema({
     title:{
         type:String,
         required:true,
@@ -29,8 +29,8 @@ const taskSchema = mongooes.Schema({
         default:null
     },
     owner:{
-        type:mongooes.Schema.type.ObjectId,
-        ref:'User',
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
         required:true,
         index:true
     },
@@ -48,4 +48,4 @@ taskSchema.set('toJSON', {
   transform: (_d, ret) => { ret.id = ret._id; delete ret._id; delete ret.__v; return ret; },
 });
 
-export const Task=mongooes.model('task',taskSchema);
+export const Task = mongoose.model('task', taskSchema);

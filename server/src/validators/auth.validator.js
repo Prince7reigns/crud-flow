@@ -10,15 +10,15 @@ export const registerSchema = z.object({
          .min(3,'Name is too short')
          .max(60,'Name is too long'),
         email:z.string({
-             required_error: 'Name is required',
-             invalid_type_error: 'Name must be text',
+             required_error: 'Email is required',
+             invalid_type_error: 'Email must be text',
         })
          .trim()
          .lowercase()
          .email('invaild email'),
         password:z.string({
-             required_error: 'Name is required',
-             invalid_type_error: 'Name must be text',
+             required_error: 'Password is required',
+             invalid_type_error: 'Password must be text',
         })
          .min(8,'password is too short')
          .regex(/[A-Za-z]/, 'Needs a letter')
@@ -29,18 +29,16 @@ export const registerSchema = z.object({
 export const loginSchema = z.object({
     body:z.object({
         email: z.string({
-             required_error: 'Name is required',
-             invalid_type_error: 'Name must be text',
+             required_error: 'Email is required',
+             invalid_type_error: 'Email must be text',
         })
          .trim()
          .toLowerCase()
          .email('Invalid email'),
         password:z.string({
-             required_error: 'Name is required',
-             invalid_type_error: 'Name must be text',
+             required_error: 'Password is required',
+             invalid_type_error: 'Password must be text',
         })
          .min(1,'password is required')
     })
 })
-
-
