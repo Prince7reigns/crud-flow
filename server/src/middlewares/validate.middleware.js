@@ -1,4 +1,3 @@
-import { _parse } from "zod/v4/core"
 import {ApiError} from "../utils/ApiError.js"
 
 export const validate = (schema) => (req,_res,next) =>{
@@ -10,10 +9,10 @@ export const validate = (schema) => (req,_res,next) =>{
 
     if(!result.success){
         const errors = result.error.issues.map((i)=>({
-            feild:i.path.slice(1).join('.'),
+            field:i.path.slice(1).join('.'),
             message:i.message,
         }))
-        return next(ApiError.badRequest('valdation failed',errors))
+        return next(ApiError.badRequest('Validation failed',errors))
     }
 
     req.valid = result.data;

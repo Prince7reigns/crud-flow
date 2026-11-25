@@ -1,7 +1,7 @@
-import app from "./app.js"
-
-import 'dotenv/config';
+import app from "./app.js";
 import DBconnect from "./src/config/db.js";
 
-app.listen(3000,()=> console.log(`API running on :${process.env.PORT} (${process.env.NODE_ENV})`))
-DBconnect()
+const port = Number(process.env.PORT) || 3000;
+
+await DBconnect();
+app.listen(port, () => console.log(`API running on port ${port} (${process.env.NODE_ENV ?? "development"})`));
